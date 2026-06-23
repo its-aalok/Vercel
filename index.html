@@ -64,35 +64,512 @@
             align-items: center;
             justify-content: center;
             min-height: 80vh;
-            padding: 20px;
+            padding: 34px 20px 50px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        #homePage::before,
+        #homePage::after {
+            content: '';
+            position: absolute;
+            border-radius: 999px;
+            pointer-events: none;
+            filter: blur(10px);
+            opacity: 0.65;
+            animation: homeFloat 11s ease-in-out infinite;
+        }
+        #homePage::before {
+            width: 340px;
+            height: 340px;
+            left: -120px;
+            top: 30px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.26), rgba(59, 130, 246, 0));
+        }
+        #homePage::after {
+            width: 380px;
+            height: 380px;
+            right: -150px;
+            bottom: -90px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.2), rgba(168, 85, 247, 0));
+            animation-delay: -5s;
+        }
+        @keyframes homeFloat {
+            0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(0, 20px, 0) scale(1.06); }
+        }
+        .home-hero-shell {
+            position: relative;
+            z-index: 2;
+            width: min(1180px, 100%);
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+            gap: 28px;
+            align-items: center;
+        }
+        .home-hero-copy {
+            text-align: left;
+            padding: 14px 0;
+        }
+        .home-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            margin-bottom: 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(59, 130, 246, 0.18);
+            background: rgba(15, 23, 42, 0.65);
+            color: #93c5fd;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            animation: badgeGlow 3s ease-in-out infinite;
+        }
+        #formatPage {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            padding: 40px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        #formatPage::before,
+        #formatPage::after {
+            content: '';
+            position: absolute;
+            border-radius: 999px;
+            filter: blur(8px);
+            pointer-events: none;
+            opacity: 0.6;
+            animation: formatFloat 10s ease-in-out infinite;
+        }
+        #formatPage::before {
+            width: 280px;
+            height: 280px;
+            left: -80px;
+            top: 30px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.25), rgba(59, 130, 246, 0));
+        }
+        #formatPage::after {
+            width: 320px;
+            height: 320px;
+            right: -120px;
+            bottom: 10px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.22), rgba(168, 85, 247, 0));
+            animation-delay: -4s;
+        }
+        @keyframes formatFloat {
+            0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(0, 18px, 0) scale(1.05); }
+        }
+        .format-page-badge {
+            position: relative;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            margin-bottom: 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(59, 130, 246, 0.18);
+            background: rgba(15, 23, 42, 0.65);
+            color: #93c5fd;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            animation: badgeGlow 3s ease-in-out infinite;
+        }
+        @keyframes badgeGlow {
+            0%, 100% { transform: translateY(0); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); }
+            50% { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(59, 130, 246, 0.16); }
+        }
+        #formatPage h1 {
+            position: relative;
+            z-index: 2;
+            font-size: 3.25rem;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #f8fafc 0%, #93c5fd 42%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 35px rgba(59, 130, 246, 0.18);
+        }
+        #formatPage .subtitle {
+            position: relative;
+            z-index: 2;
+            color: #94a3b8;
+            font-size: 1.05rem;
+            margin-bottom: 34px;
+            letter-spacing: 0.04em;
+            max-width: 680px;
+        }
+        .format-choice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+            width: min(1100px, 100%);
+            margin-top: 12px;
+            position: relative;
+            z-index: 2;
+        }
+        .format-choice-card {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.72));
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            padding: 28px 24px 22px;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+            animation: cardRise 0.8s ease both;
+        }
+        .format-choice-card:nth-child(1) { animation-delay: 0.02s; }
+        .format-choice-card:nth-child(2) { animation-delay: 0.08s; }
+        .format-choice-card:nth-child(3) { animation-delay: 0.14s; }
+        .format-choice-card:nth-child(4) { animation-delay: 0.20s; }
+        .format-choice-card:nth-child(5) { animation-delay: 0.26s; }
+        @keyframes cardRise {
+            from { opacity: 0; transform: translateY(18px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .format-choice-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(96, 165, 250, 0.35);
+            box-shadow: 0 30px 90px rgba(37, 99, 235, 0.16);
+        }
+        .format-choice-card::before {
+            content: '';
+            position: absolute;
+            inset: 0 auto auto 0;
+            width: 100%;
+            height: 4px;
+            opacity: 0.95;
+        }
+        .format-choice-card::after {
+            content: '';
+            position: absolute;
+            right: -30px;
+            bottom: -55px;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(96, 165, 250, 0.12), rgba(96, 165, 250, 0));
+            pointer-events: none;
+        }
+        .format-choice-card:nth-child(1)::before { background: linear-gradient(90deg, #60a5fa, #2563eb); }
+        .format-choice-card:nth-child(2)::before { background: linear-gradient(90deg, #a855f7, #7c3aed); }
+        .format-choice-card:nth-child(3)::before { background: linear-gradient(90deg, #10b981, #06b6d4); }
+        .format-choice-card:nth-child(4)::before { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+        .format-choice-card:nth-child(5)::before { background: linear-gradient(90deg, #f472b6, #8b5cf6); }
+        .format-choice-card h3 {
+            position: relative;
+            margin: 0 0 10px 0;
+            font-size: 22px;
+            color: #f8fafc;
+            letter-spacing: -0.02em;
+        }
+        .format-choice-card p {
+            position: relative;
+            margin: 0 0 18px 0;
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.65;
+            min-height: 70px;
+        }
+        .format-choice-card .format-cta {
+            position: relative;
+            width: 100%;
+            border-radius: 16px;
+        }
+        .btn-format-choice {
+            background: rgba(15, 23, 42, 0.18);
+            color: #cbd5e1;
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            width: 100%;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+        }
+        .btn-format-choice:hover:not(:disabled) {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.16), rgba(168, 85, 247, 0.16));
+            border-color: rgba(96, 165, 250, 0.55);
+            color: #f8fafc;
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.14), 0 18px 40px rgba(59, 130, 246, 0.2), 0 0 28px rgba(168, 85, 247, 0.14);
+        }
+        .btn-format-choice::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(255,255,255,0.18), rgba(255,255,255,0), rgba(255,255,255,0.12));
+            transform: translateX(-100%);
+            transition: transform 0.45s ease;
+        }
+        .btn-format-choice:hover:not(:disabled)::after {
+            transform: translateX(100%);
+        }
+        .format-choice-card:hover .btn-format-choice {
+            border-color: rgba(96, 165, 250, 0.35);
+        }
+        .setup-actions-menu {
+            position: relative;
+            display: inline-block;
+            z-index: 2000;
+        }
+        .setup-actions-toggle {
+            background: #1e293b;
+            border: 1px solid var(--border-color);
+            color: #f8fafc;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+            min-width: 56px;
+            padding: 10px 14px;
+            font-size: 18px;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+        }
+        .setup-actions-toggle:hover:not(:disabled) {
+            background: #334155;
+            border-color: #475569;
+        }
+        .setup-actions-toggle .menu-icon {
+            display: inline-block;
+            letter-spacing: 0;
+            transform: translateY(-1px);
+        }
+        .setup-actions-panel {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: calc(100% + 8px);
+            min-width: 200px;
+            background: rgba(15, 23, 42, 0.98);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+            padding: 6px;
+            z-index: 2001;
+        }
+        .setup-actions-menu.open .setup-actions-panel {
+            display: block;
+        }
+        .setup-menu-item {
+            width: 100%;
+            text-align: left;
+            background: transparent;
+            color: #e2e8f0;
+            border: none;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+        }
+        .setup-menu-item:hover:not(:disabled) {
+            background: rgba(59, 130, 246, 0.12);
+            color: #f8fafc;
+        }
+        .setup-menu-item:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .setup-menu-divider {
+            height: 1px;
+            background: rgba(51, 65, 85, 0.7);
+            margin: 6px 4px;
+        }
+        .setup-participants-wrap {
+            margin: 4px 2px 0 2px;
+            border-top: 1px solid rgba(51, 65, 85, 0.7);
+            padding-top: 6px;
+        }
+        .setup-participants-toggle {
+            width: 100%;
+            text-align: left;
+            background: transparent;
+            color: #e2e8f0;
+            border: none;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .setup-participants-toggle:hover {
+            background: rgba(59, 130, 246, 0.12);
+            color: #f8fafc;
+        }
+        .setup-participants-list {
+            display: none;
+            margin-top: 8px;
+            max-height: 180px;
+            overflow-y: auto;
+            padding: 6px;
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+            border-radius: 10px;
+        }
+        .setup-participants-wrap.open .setup-participants-list {
+            display: block;
+        }
+        .participant-item {
+            padding: 7px 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #cbd5e1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .participant-item + .participant-item {
+            margin-top: 4px;
+        }
+        .participant-item .participant-index {
+            color: #60a5fa;
+            font-size: 11px;
+            font-weight: 700;
+            margin-right: 10px;
         }
         #homePage h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+            font-size: 4rem;
+            margin-bottom: 12px;
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, #f8fafc 0%, #93c5fd 42%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 14px 35px rgba(59, 130, 246, 0.16);
         }
         #homePage .subtitle {
+            position: relative;
+            z-index: 2;
             color: #94a3b8;
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            letter-spacing: 0.05em;
+            font-size: 1.15rem;
+            margin-bottom: 26px;
+            letter-spacing: 0.03em;
+            line-height: 1.7;
+            max-width: 740px;
+        }
+        .home-chip-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            justify-content: flex-start;
+            margin: 0 0 26px 0;
+            position: relative;
+            z-index: 2;
+            width: min(760px, 100%);
+        }
+        .home-stat-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 14px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.24);
+            border: 1px solid rgba(148, 163, 184, 0.08);
+            color: rgba(226, 232, 240, 0.72);
+            font-size: 12px;
+            font-weight: 700;
+            backdrop-filter: blur(12px);
+            opacity: 0.68;
+            animation: chipRise 0.7s ease both;
+        }
+        .home-stat-chip:hover {
+            opacity: 1;
+            color: #f8fafc;
+            border-color: rgba(96, 165, 250, 0.22);
+            background: rgba(15, 23, 42, 0.44);
+        }
+        .home-stat-chip:nth-child(1) { animation-delay: 0.05s; }
+        .home-stat-chip:nth-child(2) { animation-delay: 0.1s; }
+        .home-stat-chip:nth-child(3) { animation-delay: 0.15s; }
+        .home-stat-chip:nth-child(4) { animation-delay: 0.2s; }
+        @keyframes chipRise {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .home-stat-chip .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.65), rgba(168, 85, 247, 0.65));
+            box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.04);
+            opacity: 0.8;
+        }
+        .home-actions-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: flex-start;
         }
         .developer-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 40px 50px;
-            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.76));
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 28px;
+            padding: 34px 32px;
+            max-width: 520px;
             width: 100%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+            margin-bottom: 0;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
         }
         .developer-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-            border-color: rgba(59, 130, 246, 0.2);
+            transform: translateY(-6px);
+            box-shadow: 0 34px 90px rgba(0, 0, 0, 0.58);
+            border-color: rgba(59, 130, 246, 0.24);
+        }
+        .developer-card::before {
+            content: '';
+            position: absolute;
+            inset: 0 auto auto 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #60a5fa, #a855f7, #f59e0b);
+        }
+        .home-spotlight {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: stretch;
+            position: relative;
+            z-index: 2;
+        }
+        .home-spotlight-card {
+            padding: 20px 22px;
+            border-radius: 22px;
+            background: rgba(15, 23, 42, 0.62);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+        .home-spotlight-title {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #93c5fd;
+            margin-bottom: 10px;
+        }
+        .home-spotlight-text {
+            color: #cbd5e1;
+            font-size: 14px;
+            line-height: 1.7;
         }
         .developer-avatar {
             width: 120px;
@@ -163,13 +640,13 @@
             display: flex;
             gap: 16px;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-start;
         }
         .home-actions button {
             padding: 14px 40px;
             font-size: 16px;
             font-weight: 700;
-            border-radius: 30px;
+            border-radius: 999px;
             transition: all 0.3s ease;
         }
         .btn-home-primary {
@@ -193,25 +670,6 @@
             color: #f8fafc;
         }
 
-        .bracket-preview {
-            margin-top: 30px;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            opacity: 0.5;
-        }
-        .bracket-preview .preview-item {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 8px 16px;
-            font-size: 12px;
-            color: #64748b;
-        }
-        .bracket-preview .preview-item .highlight {
-            color: #60a5fa;
-        }
 
         /* ── Setup ── */
         .setup-section {
@@ -223,9 +681,80 @@
             box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
             margin-bottom: 30px;
             display: none;
+            position: relative;
+            z-index: 20;
         }
         .setup-section.visible {
             display: block;
+        }
+        .setup-hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 0 0 14px;
+            margin-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .setup-hero-copy {
+            flex: 1;
+            min-width: 0;
+        }
+        .setup-hero-title {
+            font-size: 28px;
+            font-weight: 900;
+            color: #f8fafc;
+            line-height: 1.1;
+        }
+        .setup-status-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .setup-status-row .save-status {
+            margin-top: 0;
+            margin-right: 0;
+        }
+        .setup-status-row .bo3-toggle-wrap {
+            margin-top: 0;
+        }
+        .setup-hero-menu {
+            flex: 0 0 auto;
+            margin-left: auto;
+        }
+        .best-of-n-config {
+            display: none;
+            margin-top: 14px;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.18);
+            background: rgba(15, 23, 42, 0.45);
+            max-width: 360px;
+        }
+        .best-of-n-config .best-of-n-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 800;
+            color: #60a5fa;
+            margin-bottom: 8px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .best-of-n-config .best-of-n-hint {
+            display: block;
+            margin-top: 8px;
+            font-size: 11px;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+        .best-of-n-config .best-of-n-input {
+            width: 100%;
+            box-sizing: border-box;
+            background: rgba(15, 23, 42, 0.88);
+            color: #e2e8f0;
+            border: 1px solid rgba(59, 130, 246, 0.22);
         }
         .setup-row {
             display: flex;
@@ -284,6 +813,24 @@
             border: 1px solid var(--border-color);
             color: #38bdf8;
             margin-right: 10px;
+        }
+        @keyframes statusGlowPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.0), 0 0 12px rgba(56, 189, 248, 0.18);
+                border-color: rgba(56, 189, 248, 0.35);
+            }
+            50% {
+                box-shadow: 0 0 0 6px rgba(56, 189, 248, 0.08), 0 0 18px rgba(56, 189, 248, 0.42);
+                border-color: rgba(96, 165, 250, 0.75);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.0), 0 0 12px rgba(56, 189, 248, 0.18);
+                border-color: rgba(56, 189, 248, 0.35);
+            }
+        }
+        #saveStatus.status-active {
+            animation: statusGlowPulse 1.8s ease-in-out infinite;
+            box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.25), 0 0 14px rgba(56, 189, 248, 0.28);
         }
 
         input {
@@ -1136,6 +1683,11 @@
             color: #34d399;
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
         }
+        .btn-confirm:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
 
         .btn-success-widget {
             background: linear-gradient(135deg, #10b981, #059669);
@@ -1318,9 +1870,16 @@
             text-shadow: 0 0 40px rgba(251, 191, 36, 0.15);
         }
         .celebration-champion .highlight {
-            background: linear-gradient(to right, #fbbf24, #f59e0b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(17, 24, 39, 0.92), rgba(30, 41, 59, 0.92));
+            border: 1px solid rgba(251, 191, 36, 0.35);
+            color: #fff6d6;
+            -webkit-text-fill-color: #fff6d6;
+            box-shadow: 0 0 0 1px rgba(251, 191, 36, 0.12), 0 12px 30px rgba(251, 191, 36, 0.14);
+            text-shadow: none;
+            line-height: 1;
         }
 
         .celebration-stats {
@@ -1533,6 +2092,27 @@
 
         /* ── Responsive ── */
         @media (max-width: 900px) {
+            #formatPage {
+                padding: 28px 16px 44px;
+            }
+            #formatPage h1 {
+                font-size: 2.4rem;
+            }
+            #formatPage .subtitle {
+                font-size: 0.98rem;
+                margin-bottom: 24px;
+            }
+            .format-choice-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .format-choice-card {
+                padding: 22px 18px 18px;
+                border-radius: 20px;
+            }
+            .format-choice-card p {
+                min-height: auto;
+            }
             .global-layout-grid {
                 grid-template-columns: 1fr;
             }
@@ -1573,6 +2153,10 @@
             .celebration-champion {
                 font-size: 30px;
             }
+            .celebration-champion .highlight {
+                padding: 8px 18px;
+                border-radius: 14px;
+            }
             .celebration-stats {
                 gap: 20px;
                 flex-wrap: wrap;
@@ -1602,6 +2186,22 @@
             }
             .developer-name {
                 font-size: 22px;
+            }
+            .home-hero-shell {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .home-hero-copy {
+                text-align: center;
+            }
+            .home-chip-grid {
+                justify-content: center;
+            }
+            .home-actions-wrap {
+                align-items: center;
+            }
+            .home-actions {
+                justify-content: center;
             }
         }
     </style>
@@ -1664,38 +2264,121 @@
     <!-- ====== MAIN ====== -->
     <div class="container">
 
+        <!-- ====== FORMAT SELECTION ====== -->
+        <div id="formatPage">
+            <div class="format-page-badge">Choose your battle mode</div>
+            <h1>🏁 Select Format</h1>
+            <p class="subtitle">Choose the bracket type you want to play</p>
+
+            <div class="format-choice-grid">
+                <div class="format-choice-card">
+                    <h3>Single Elimination</h3>
+                    <p>One loss and you're out. A direct knockout bracket with no losers' bracket.</p>
+                    <button class="btn-format-choice format-cta" onclick="selectTournamentFormat('single')">Select Single Elimination</button>
+                </div>
+                <div class="format-choice-card">
+                    <h3>Double Elimination</h3>
+                    <p>Two lives, winners and losers brackets, and the full tournament flow.</p>
+                    <button class="btn-format-choice format-cta" onclick="selectTournamentFormat('double')">Select Double Elimination</button>
+                </div>
+                <div class="format-choice-card">
+                    <h3>Round Robin</h3>
+                    <p>Every player faces every other player once. Winner is decided by total points.</p>
+                    <button class="btn-format-choice format-cta" onclick="selectTournamentFormat('roundRobin')">Select Round Robin</button>
+                </div>
+                <div class="format-choice-card">
+                    <h3>Best of N</h3>
+                    <p>Two players play an odd number of sets. Winner is decided by set score.</p>
+                    <button class="btn-format-choice format-cta" onclick="selectTournamentFormat('bestOfN')">Select Best of N</button>
+                </div>
+                <div class="format-choice-card">
+                    <h3>Race to N</h3>
+                    <p>Players rotate one match at a time. First player to reach N wins becomes champion.</p>
+                    <button class="btn-format-choice format-cta" onclick="selectTournamentFormat('raceToN')">Select Race to N</button>
+                </div>
+            </div>
+            <div style="margin-top:20px;">
+                <button class="btn-home-secondary" onclick="goHome()">↩ Back Home</button>
+            </div>
+        </div>
+
         <!-- ====== HOME PAGE ====== -->
         <div id="homePage">
-            <h1>🏆 Tournament Arena</h1>
-            <p class="subtitle">Double Elimination Bracket System</p>
+            <div class="home-hero-shell">
+                <div class="home-hero-copy">
+                    <div class="home-hero-badge">Built for tournament flow</div>
+                    <h1>🏆 Tournament Arena</h1>
+                    <p class="subtitle">A polished bracket engine for knockout, round robin, best-of series, and race-to-target play.</p>
 
-            <div class="developer-card">
-                <div class="developer-avatar">👨‍💻</div>
-                <div class="developer-name">Alok Kumar</div>
-                <div class="developer-role">Full Stack Developer</div>
-                <a href="mailto:itsaalok.kumar@gmail.com" class="developer-email">
-                    <span class="email-icon">✉️</span>
-                    itsaalok.kumar@gmail.com
-                </a>
-                <div class="developer-badge">⚡ Built with ❤️</div>
-            </div>
+                    <div class="home-chip-grid">
+                        <div class="home-stat-chip"><span class="dot"></span> Live dashboard scoring</div>
+                        <div class="home-stat-chip"><span class="dot"></span> Multiple tournament formats</div>
+                        <div class="home-stat-chip"><span class="dot"></span> Celebration-ready finish</div>
+                        <div class="home-stat-chip"><span class="dot"></span> Mobile-friendly flow</div>
+                        <div class="home-stat-chip"><span class="dot"></span> Single &amp; Double Elimination</div>
+                        <div class="home-stat-chip"><span class="dot"></span> Best of 3 Support</div>
+                    </div>
 
-            <div class="home-actions">
-                <button class="btn-home-primary" onclick="enterTournament()">🚀 Enter Tournament</button>
-                <button class="btn-home-secondary" onclick="loadSavedTournament()">📂 Load Saved</button>
-            </div>
+                    <div class="home-actions-wrap">
+                        <div class="home-actions">
+                            <button class="btn-home-primary" onclick="enterTournament()">🚀 Choose Format</button>
+                            <button class="btn-home-secondary" onclick="loadSavedTournament()">📂 Load Saved</button>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="bracket-preview">
-                <span class="preview-item">🔹 Double Elimination</span>
-                <span class="preview-item">🔹 <span class="highlight">Best of 3</span> Support</span>
-                <span class="preview-item">🔹 Live Dashboard</span>
-                <span class="preview-item">🔹 🎱 Coin Toss</span>
-                <span class="preview-item">🔹 🏆 Celebrations</span>
+                <div class="home-spotlight">
+                    <div class="developer-card">
+                        <div class="developer-avatar">👨‍💻</div>
+                        <div class="developer-name">Alok Kumar</div>
+                        <div class="developer-role">Full Stack Developer</div>
+                        <a href="mailto:itsaalok.kumar@gmail.com" class="developer-email">
+                            <span class="email-icon">✉️</span>
+                            itsaalok.kumar@gmail.com
+                        </a>
+                        <div class="developer-badge">⚡ Built with ❤️</div>
+                    </div>
+                    <div class="home-spotlight-card">
+                        <div class="home-spotlight-title">Ready to start</div>
+                        <div class="home-spotlight-text">Pick a format, add players, and the app handles bracket creation, live updates, and the final champion moment.</div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- ====== SETUP SECTION ====== -->
         <div class="setup-section" id="setupSection">
+            <div class="setup-hero">
+                <div class="setup-hero-copy">
+                    <div class="setup-hero-title">Single Elimination Setup</div>
+                    <div class="setup-status-row">
+                        <div id="saveStatus" class="save-status">📋 System Booted</div>
+                        <label class="bo3-toggle-wrap" id="bo3ToggleWrap" title="Each match is a Best-of-3 series (first to 2 wins)">
+                            <input type="checkbox" id="bo3Toggle" onchange="onBo3Toggle()" />
+                            <span class="bo3-label">Best of 3</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="setup-hero-menu">
+                    <div class="setup-actions-menu" id="setupActionsMenu">
+                        <button id="setupActionsToggle" class="setup-actions-toggle btn-secondary-action" onclick="toggleSetupActionsMenu(event)" aria-label="Setup menu">
+                            <span class="menu-icon">☰</span>
+                        </button>
+                        <div class="setup-actions-panel" id="setupActionsPanel">
+                            <div class="setup-participants-wrap" id="participantsWrap">
+                                <button class="setup-participants-toggle" id="participantsToggle" onclick="toggleParticipantsList(event)">👥 Participants ▾</button>
+                                <div class="setup-participants-list" id="participantsList"></div>
+                            </div>
+                            <div class="setup-menu-divider"></div>
+                            <button id="modifyBtn" class="setup-menu-item" onclick="openModifyModal()">✏️ Modify Players</button>
+                            <div class="setup-menu-divider"></div>
+                            <button id="topResetBtn" class="setup-menu-item" onclick="freshStartTournamentReset()">🔄 Reset &amp; Start Fresh</button>
+                            <div class="setup-menu-divider"></div>
+                            <button class="setup-menu-item" onclick="goHome()">🏠 Home</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="setup-row">
                 <div class="setup-controls">
                     <div class="input-bucket" id="playerEntryBox">
@@ -1706,20 +2389,18 @@
                     <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
                         <button id="genBtn" class="btn-primary" onclick="generateBracket()">Create Bracket</button>
                         <button id="startBtn" class="btn-success" onclick="startTournament()" style="display:none;">Start Tournament</button>
-                        <label class="bo3-toggle-wrap" id="bo3ToggleWrap" title="Each match is a Best-of-3 series (first to 2 wins)">
-                            <input type="checkbox" id="bo3Toggle" onchange="onBo3Toggle()" />
-                            <span class="bo3-label">Best of 3</span>
-                        </label>
+                    </div>
+                    <div id="bestOfNConfig" class="best-of-n-config">
+                        <label class="best-of-n-label" for="bestOfNInput">Best of N</label>
+                        <input id="bestOfNInput" class="best-of-n-input" type="number" min="1" step="2" placeholder="Enter odd N (3, 5, 7...)" />
+                        <span class="best-of-n-hint">Use an odd number so the series cannot end in a tie.</span>
+                    </div>
+                    <div id="raceToNConfig" class="best-of-n-config">
+                        <label class="best-of-n-label" for="raceToNInput">Race to N</label>
+                        <input id="raceToNInput" class="best-of-n-input" type="number" min="1" step="1" placeholder="Enter winning score N" />
+                        <span class="best-of-n-hint">First player to reach N match wins becomes champion.</span>
                     </div>
                 </div>
-                <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                    <button id="modifyBtn" class="btn-warning" onclick="openModifyModal()" style="display:none;">✏️ Modify Players</button>
-                    <button id="topResetBtn" class="btn-danger" onclick="freshStartTournamentReset()">Reset &amp; Start Fresh</button>
-                    <button class="btn-secondary-action" onclick="goHome()">🏠 Home</button>
-                </div>
-            </div>
-            <div>
-                <div id="saveStatus" class="save-status">📋 System Booted</div>
             </div>
         </div>
 
@@ -1734,21 +2415,21 @@
 
             <div class="bracket-container">
                 <div id="winnersSection" class="bracket-section">
-                    <h2>Upper Bracket (Winners) <span id="winnersBo3Badge" class="bo3-badge" style="display:none;">BO3</span></h2>
+                    <h2 id="winnersSectionTitle">Upper Bracket (Winners) <span id="winnersBo3Badge" class="bo3-badge" style="display:none;">BO3</span></h2>
                     <div id="winnersGrid" class="tournament-grid">
                         <svg id="winnersSVG" class="svg-container"></svg>
                     </div>
                 </div>
 
                 <div id="losersSection" class="bracket-section">
-                    <h2>Lower Bracket (Losers) <span id="losersBo3Badge" class="bo3-badge" style="display:none;">BO3</span></h2>
+                    <h2 id="losersSectionTitle">Lower Bracket (Losers) <span id="losersBo3Badge" class="bo3-badge" style="display:none;">BO3</span></h2>
                     <div id="losersGrid" class="tournament-grid">
                         <svg id="losersSVG" class="svg-container"></svg>
                     </div>
                 </div>
 
                 <div id="grandFinalsSection" class="bracket-section">
-                    <h2>Grand Finals <span id="gfBo3Badge" class="bo3-badge" style="display:none;">BO3</span></h2>
+                    <h2 id="grandFinalsSectionTitle">Grand Finals <span id="gfBo3Badge" class="bo3-badge" style="display:none;">BO3</span></h2>
                     <div id="grandFinalsGrid" class="tournament-grid" style="justify-content:center;"></div>
                 </div>
             </div>
@@ -1793,9 +2474,15 @@
             winnersRounds: [],
             losersRounds: [],
             grandFinal: null,
+            bracketFormat: "double",
             activeMatchId: null,
             activeMatchMetadata: null,
             pendingWinner: null,
+            pendingRoundRobinDiff: null,
+            bestOfN: null,
+            raceToN: null,
+            raceToNWinCounts: {},
+            raceToNMatchHistory: [],
             bracketResetPlayed: false,
             status: "empty",
             bestOfThree: false
@@ -1808,34 +2495,146 @@
         // ================================================================
         //  NAVIGATION
         // ================================================================
-        function enterTournament() {
-            isHomePageVisible = false;
-            document.getElementById('homePage').style.display = 'none';
-            document.getElementById('setupSection').classList.add('visible');
-            // Check if there's a saved tournament
-            const saved = localStorage.getItem('arenaLifecycleTournamentSave');
-            if (saved) {
-                loadFromLocalStorage();
-            } else {
-                renderPlayerChips();
-                updateBo3ToggleState();
-                updateModifyButtonState();
-            }
-        }
-
-        function goHome() {
+        function showHomePage() {
             isHomePageVisible = true;
+            document.getElementById('formatPage').style.display = 'none';
             document.getElementById('homePage').style.display = 'flex';
             document.getElementById('setupSection').classList.remove('visible');
             document.getElementById('roundNavToolbar').classList.remove('visible');
             document.getElementById('bracketsDisplay').classList.remove('visible');
             document.getElementById('statsWidget').classList.remove('visible');
+            closeSetupActionsMenu();
+        }
+
+        function resetTournamentWorkspace(format) {
+            tournamentData = {
+                players: [],
+                winnersRounds: [],
+                losersRounds: [],
+                grandFinal: null,
+                bracketFormat: format || 'double',
+                activeMatchId: null,
+                activeMatchMetadata: null,
+                pendingWinner: null,
+                pendingRoundRobinDiff: null,
+                bestOfN: null,
+                raceToN: null,
+                raceToNWinCounts: {},
+                raceToNMatchHistory: [],
+                bracketResetPlayed: false,
+                status: "empty",
+                bestOfThree: false
+            };
+            stagedPlayers = ["Alice", "Bob", "Charlie", "Dave"];
+            modifyPlayersWorkingCopy = [];
+            const bo3Toggle = document.getElementById('bo3Toggle');
+            if (bo3Toggle) bo3Toggle.checked = false;
+            const bestOfNInput = document.getElementById('bestOfNInput');
+            if (bestOfNInput) bestOfNInput.value = '';
+            const raceToNInput = document.getElementById('raceToNInput');
+            if (raceToNInput) raceToNInput.value = '';
+        }
+
+        function toggleSetupActionsMenu(event) {
+            if (event) event.stopPropagation();
+            const menu = document.getElementById('setupActionsMenu');
+            if (!menu) return;
+            menu.classList.toggle('open');
+        }
+
+        function closeSetupActionsMenu() {
+            const menu = document.getElementById('setupActionsMenu');
+            if (menu) menu.classList.remove('open');
+        }
+
+        function toggleParticipantsList(event) {
+            if (event) event.stopPropagation();
+            const wrap = document.getElementById('participantsWrap');
+            if (wrap) wrap.classList.toggle('open');
+        }
+
+        function getCurrentParticipantList() {
+            return (tournamentData.status !== "empty") ? tournamentData.players : stagedPlayers;
+        }
+
+        function updateParticipantsMenuLabel() {
+            const btn = document.getElementById('participantsToggle');
+            const participants = getCurrentParticipantList();
+            if (btn) {
+                btn.innerText = `👥 Participants (${participants.length}) ▾`;
+            }
+        }
+
+        document.addEventListener('click', function() {
+            closeSetupActionsMenu();
+        });
+
+        function showFormatSelectionPage() {
+            isHomePageVisible = false;
+            document.getElementById('formatPage').style.display = 'flex';
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('setupSection').classList.remove('visible');
+            document.getElementById('roundNavToolbar').classList.remove('visible');
+            document.getElementById('bracketsDisplay').classList.remove('visible');
+            document.getElementById('statsWidget').classList.remove('visible');
+            closeSetupActionsMenu();
+        }
+
+        function showTournamentSetup(format) {
+            isHomePageVisible = false;
+            document.getElementById('formatPage').style.display = 'none';
+            document.getElementById('homePage').style.display = 'none';
+            tournamentData.bracketFormat = format || 'double';
+            document.getElementById('setupSection').classList.add('visible');
+            if (tournamentData.status === 'empty') {
+                applyLifecycleUIChanges();
+                updateLiveWidget();
+            }
+            applyFormatVisibility();
+            closeSetupActionsMenu();
+        }
+
+        function enterTournament() {
+            showFormatSelectionPage();
+        }
+
+        function selectTournamentFormat(format) {
+            if (format === 'single') {
+                resetTournamentWorkspace('single');
+                showTournamentSetup('single');
+                return;
+            }
+            if (format === 'roundRobin') {
+                resetTournamentWorkspace('roundRobin');
+                showTournamentSetup('roundRobin');
+                return;
+            }
+            if (format === 'bestOfN') {
+                resetTournamentWorkspace('bestOfN');
+                showTournamentSetup('bestOfN');
+                return;
+            }
+            if (format === 'raceToN') {
+                resetTournamentWorkspace('raceToN');
+                showTournamentSetup('raceToN');
+                return;
+            }
+            if (format === 'double') {
+                resetTournamentWorkspace('double');
+                showTournamentSetup('double');
+            }
+        }
+
+        function goHome() {
+            closeSetupActionsMenu();
+            showHomePage();
         }
 
         function loadSavedTournament() {
             const saved = localStorage.getItem('arenaLifecycleTournamentSave');
             if (saved) {
-                enterTournament();
+                const savedTournament = JSON.parse(saved);
+                showTournamentSetup(savedTournament.bracketFormat || 'double');
                 loadFromLocalStorage();
             } else {
                 alert('No saved tournament found. Create a new one!');
@@ -2066,6 +2865,10 @@
             const inputEl = document.getElementById('onePlayerInput');
             const value = inputEl.value.trim();
             if (!value) return;
+            if (tournamentData.bracketFormat === 'bestOfN' && stagedPlayers.length >= 2) {
+                alert('Best of N allows only two players.');
+                return;
+            }
             if (stagedPlayers.some(p => p.toLowerCase() === value.toLowerCase())) {
                 alert("This name is already in the tournament pool.");
                 return;
@@ -2084,23 +2887,37 @@
 
         function renderPlayerChips() {
             const container = document.getElementById('playerChipsContainer');
-            container.innerHTML = '';
+            const participantsList = document.getElementById('participantsList');
+            if (container) {
+                container.innerHTML = '';
+                container.style.display = tournamentData.status === "empty" ? 'flex' : 'none';
+            }
+            if (participantsList) participantsList.innerHTML = '';
             const isLocked = tournamentData.status !== "empty";
-            const displayPlayers = isLocked ? tournamentData.players : stagedPlayers;
+            const displayPlayers = getCurrentParticipantList();
             displayPlayers.forEach((player, idx) => {
-                const chip = document.createElement('div');
-                chip.className = 'player-chip';
-                chip.innerHTML = `<span>${player}</span>`;
-                if (!isLocked) {
-                    const removeBtn = document.createElement('span');
-                    removeBtn.className = 'remove-chip-btn';
-                    removeBtn.innerHTML = '&times;';
-                    removeBtn.onclick = () => removeSinglePlayer(idx);
-                    chip.appendChild(removeBtn);
+                if (container) {
+                    const chip = document.createElement('div');
+                    chip.className = 'player-chip';
+                    chip.innerHTML = `<span>${player}</span>`;
+                    if (!isLocked) {
+                        const removeBtn = document.createElement('span');
+                        removeBtn.className = 'remove-chip-btn';
+                        removeBtn.innerHTML = '&times;';
+                        removeBtn.onclick = () => removeSinglePlayer(idx);
+                        chip.appendChild(removeBtn);
+                    }
+                    container.appendChild(chip);
                 }
-                container.appendChild(chip);
+                if (participantsList) {
+                    const row = document.createElement('div');
+                    row.className = 'participant-item';
+                    row.innerHTML = `<span><span class="participant-index">${idx + 1}.</span>${player}</span>`;
+                    participantsList.appendChild(row);
+                }
             });
             document.getElementById('playerEntryBox').style.display = isLocked ? 'none' : 'flex';
+            updateParticipantsMenuLabel();
             updateBo3ToggleState();
             updateModifyButtonState();
         }
@@ -2112,19 +2929,29 @@
             const modifyBtn = document.getElementById('modifyBtn');
             if (!modifyBtn) return;
 
-            const gf = tournamentData.grandFinal;
-            const isGfDecided = gf && gf.p1 && gf.p2 && gf.p1 !== "BYE" && gf.p2 !== "BYE";
+            if (tournamentData.bracketFormat === 'bestOfN' || tournamentData.bracketFormat === 'raceToN') {
+                modifyBtn.style.display = 'none';
+                modifyBtn.disabled = true;
+                return;
+            }
 
-            if ((tournamentData.status === "active" || tournamentData.status === "unstarted") && !isGfDecided) {
-                modifyBtn.style.display = 'inline-block';
+            const isFinalLocked = tournamentData.bracketFormat === 'single' ?
+                isSingleEliminationFinalLocked() :
+                (tournamentData.grandFinal && tournamentData.grandFinal.p1 && tournamentData.grandFinal.p2 &&
+                    tournamentData.grandFinal.p1 !== "BYE" && tournamentData.grandFinal.p2 !== "BYE");
+
+            if ((tournamentData.status === "active" || tournamentData.status === "unstarted") && !isFinalLocked) {
+                modifyBtn.style.display = 'block';
                 modifyBtn.disabled = false;
                 modifyBtn.title = 'Modify player roster';
                 modifyBtn.style.opacity = '1';
                 modifyBtn.style.cursor = 'pointer';
-            } else if (tournamentData.status === "active" && isGfDecided) {
-                modifyBtn.style.display = 'inline-block';
+            } else if (tournamentData.status === "active" && isFinalLocked) {
+                modifyBtn.style.display = 'block';
                 modifyBtn.disabled = true;
-                modifyBtn.title = '⚠️ Grand Finals are set! Players cannot be modified.';
+                modifyBtn.title = tournamentData.bracketFormat === 'single' ?
+                    '⚠️ Final match is set! Players cannot be modified.' :
+                    '⚠️ Grand Finals are set! Players cannot be modified.';
                 modifyBtn.style.opacity = '0.5';
                 modifyBtn.style.cursor = 'not-allowed';
             } else {
@@ -2143,10 +2970,13 @@
         function openModifyModal() {
             const modifyBtn = document.getElementById('modifyBtn');
             if (modifyBtn.disabled) {
-                alert('⚠️ Grand Finals are already set! Players cannot be modified at this stage.');
+                alert(tournamentData.bracketFormat === 'single' ?
+                    '⚠️ Final match is already set! Players cannot be modified at this stage.' :
+                    '⚠️ Grand Finals are already set! Players cannot be modified at this stage.');
                 return;
             }
             if (tournamentData.status !== "active" && tournamentData.status !== "unstarted") return;
+            closeSetupActionsMenu();
             modifyPlayersWorkingCopy = [...tournamentData.players];
             renderModifyList();
             document.getElementById('modifyPlayersModal').classList.add('open');
@@ -2419,6 +3249,15 @@
         function updateBo3ToggleState() {
             const toggle = document.getElementById('bo3Toggle');
             const wrap = document.getElementById('bo3ToggleWrap');
+            if (tournamentData.bracketFormat === 'bestOfN' || tournamentData.bracketFormat === 'raceToN') {
+                if (wrap) wrap.style.display = 'none';
+                if (toggle) {
+                    toggle.disabled = true;
+                    toggle.checked = false;
+                }
+                return;
+            }
+            if (wrap) wrap.style.display = 'flex';
             if (tournamentData.status === "empty" || tournamentData.status === "unstarted") {
                 toggle.disabled = false;
                 wrap.style.opacity = '1';
@@ -2431,9 +3270,70 @@
             toggle.checked = tournamentData.bestOfThree;
         }
 
+        function applyFormatVisibility() {
+            const isSingle = tournamentData.bracketFormat === 'single';
+            const isRoundRobin = tournamentData.bracketFormat === 'roundRobin';
+            const isBestOfN = tournamentData.bracketFormat === 'bestOfN';
+            const isRaceToN = tournamentData.bracketFormat === 'raceToN';
+            const winnersSection = document.getElementById('winnersSection');
+            const losersSection = document.getElementById('losersSection');
+            const grandFinalsSection = document.getElementById('grandFinalsSection');
+            const winnersTitle = document.getElementById('winnersSectionTitle');
+            const losersTitle = document.getElementById('losersSectionTitle');
+            const grandFinalsTitle = document.getElementById('grandFinalsSectionTitle');
+            const formatStatus = document.getElementById('formatStatus');
+            const bestOfNConfig = document.getElementById('bestOfNConfig');
+            const raceToNConfig = document.getElementById('raceToNConfig');
+            const setupTitle = document.querySelector('.setup-hero-title');
+            const showBestOfNConfig = isBestOfN && (tournamentData.status === "empty" || tournamentData.status === "unstarted");
+            const showRaceToNConfig = isRaceToN && (tournamentData.status === "empty" || tournamentData.status === "unstarted");
+
+            if (winnersSection) winnersSection.style.display = 'block';
+            if (losersSection) losersSection.style.display = (isSingle || isRoundRobin || isBestOfN || isRaceToN) ? 'none' : 'block';
+            if (grandFinalsSection) grandFinalsSection.style.display = (isSingle || isRoundRobin || isBestOfN || isRaceToN) ? 'none' : 'block';
+            if (bestOfNConfig) bestOfNConfig.style.display = showBestOfNConfig ? 'block' : 'none';
+            if (raceToNConfig) raceToNConfig.style.display = showRaceToNConfig ? 'block' : 'none';
+            if (formatStatus) {
+                formatStatus.textContent = isSingle ? 'Format: Single Elimination' :
+                    (isRoundRobin ? 'Format: Round Robin' :
+                        (isBestOfN ? 'Format: Best of N' :
+                            (isRaceToN ? 'Format: Race to N' : 'Format: Double Elimination')));
+            }
+            if (setupTitle) {
+                setupTitle.textContent = isSingle ? 'Single Elimination Setup' :
+                    (isRoundRobin ? 'Round Robin Setup' :
+                        (isBestOfN ? 'Best of N Setup' :
+                            (isRaceToN ? 'Race to N Setup' : 'Double Elimination Setup')));
+            }
+
+            if (winnersTitle) {
+                winnersTitle.innerHTML = isBestOfN ?
+                    'Best of N Match <span id="winnersBo3Badge" class="bo3-badge" style="display:none;">BO3</span>' :
+                    isRaceToN ?
+                    'Race to N Match <span id="winnersBo3Badge" class="bo3-badge" style="display:none;">BO3</span>' :
+                    isRoundRobin ?
+                    'Round Robin Fixtures <span id="winnersBo3Badge" class="bo3-badge" style="display:none;">BO3</span>' :
+                    isSingle ?
+                    'Single Elimination <span id="winnersBo3Badge" class="bo3-badge" style="display:none;">BO3</span>' :
+                    'Upper Bracket (Winners) <span id="winnersBo3Badge" class="bo3-badge" style="display:none;">BO3</span>';
+            }
+            if (losersTitle) {
+                losersTitle.innerHTML = 'Lower Bracket (Losers) <span id="losersBo3Badge" class="bo3-badge" style="display:none;">BO3</span>';
+            }
+            if (grandFinalsTitle) {
+                grandFinalsTitle.innerHTML = isSingle ?
+                    'Final Match <span id="gfBo3Badge" class="bo3-badge" style="display:none;">BO3</span>' :
+                    'Grand Finals <span id="gfBo3Badge" class="bo3-badge" style="display:none;">BO3</span>';
+            }
+        }
+
         function updateBo3Badges() {
             const show = tournamentData.bestOfThree;
-            ['winnersBo3Badge', 'losersBo3Badge', 'gfBo3Badge'].forEach(id => {
+            const ids = tournamentData.bracketFormat === 'single' ?
+                ['winnersBo3Badge', 'gfBo3Badge'] :
+                (tournamentData.bracketFormat === 'roundRobin' || tournamentData.bracketFormat === 'bestOfN' || tournamentData.bracketFormat === 'raceToN' ? ['winnersBo3Badge'] :
+                    ['winnersBo3Badge', 'losersBo3Badge', 'gfBo3Badge']);
+            ids.forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.style.display = show ? 'inline-block' : 'none';
             });
@@ -2472,6 +3372,17 @@
                 if (stats[m.loser]) stats[m.loser].lost++;
             };
 
+            if (tournamentData.bracketFormat === 'raceToN') {
+                (tournamentData.raceToNMatchHistory || []).forEach(m => {
+                    if (!m || !m.winner) return;
+                    if (stats[m.p1]) stats[m.p1].played++;
+                    if (stats[m.p2]) stats[m.p2].played++;
+                    if (stats[m.winner]) stats[m.winner].won++;
+                    if (stats[m.loser]) stats[m.loser].lost++;
+                });
+                return stats;
+            }
+
             tournamentData.winnersRounds.forEach(r => r.forEach(processMatch));
             tournamentData.losersRounds.forEach(r => r.forEach(processMatch));
             if (tournamentData.grandFinal) {
@@ -2490,6 +3401,132 @@
             return stats;
         }
 
+        function getRoundRobinStandings() {
+            const stats = getPlayerStats();
+            const matches = (tournamentData.winnersRounds || []).flat().filter(m =>
+                m && m.status === 'completed' && m.winner && m.loser && m.p1 && m.p2 && m.p1 !== "BYE" && m.p2 !== "BYE");
+
+            const standings = Object.keys(stats).map(player => ({
+                player: player,
+                played: stats[player].played,
+                won: stats[player].won,
+                lost: stats[player].lost,
+                points: stats[player].won * 3,
+                diff: 0,
+                h2hPoints: 0
+            }));
+
+            const playerIndex = {};
+            standings.forEach(entry => { playerIndex[entry.player] = entry; });
+
+            matches.forEach(match => {
+                const margin = parseInt(match.roundRobinDiff || match.scoreDiff || match.margin || 0, 10) || 0;
+                if (playerIndex[match.winner]) playerIndex[match.winner].diff += margin;
+                if (playerIndex[match.loser]) playerIndex[match.loser].diff -= margin;
+            });
+
+            const pointsGroups = {};
+            standings.forEach(entry => {
+                if (!pointsGroups[entry.points]) pointsGroups[entry.points] = [];
+                pointsGroups[entry.points].push(entry);
+            });
+
+            Object.keys(pointsGroups).map(Number).sort((a, b) => b - a).forEach(points => {
+                const group = pointsGroups[points];
+                const groupPlayers = {};
+                group.forEach(entry => { groupPlayers[entry.player] = true; });
+                const h2hScores = {};
+                group.forEach(entry => { h2hScores[entry.player] = 0; });
+
+                matches.forEach(match => {
+                    if (groupPlayers[match.p1] && groupPlayers[match.p2] && match.winner && groupPlayers[match.winner]) {
+                        h2hScores[match.winner] += 1;
+                    }
+                });
+
+                group.forEach(entry => {
+                    entry.h2hPoints = h2hScores[entry.player] || 0;
+                });
+            });
+
+            standings.sort(function(a, b) {
+                if (b.points !== a.points) return b.points - a.points;
+                if (b.diff !== a.diff) return b.diff - a.diff;
+                if (b.h2hPoints !== a.h2hPoints) return b.h2hPoints - a.h2hPoints;
+                return a.player.localeCompare(b.player);
+            });
+
+            return standings;
+        }
+
+        function getRoundRobinChampion() {
+            const standings = getRoundRobinStandings();
+            return standings.length ? standings[0].player : null;
+        }
+
+        function getRoundRobinChampionDetails() {
+            const standings = getRoundRobinStandings();
+            if (!standings.length) {
+                return { champion: null, reason: '' };
+            }
+
+            const champion = standings[0];
+            const topPoints = champion.points;
+            const topGroup = standings.filter(entry => entry.points === topPoints);
+
+            if (topGroup.length === 1) {
+                return {
+                    champion: champion.player,
+                    reason: `Won by maximum points (${topPoints}).`
+                };
+            }
+
+            const maxDiff = Math.max.apply(null, topGroup.map(entry => entry.diff || 0));
+            const diffLeaders = topGroup.filter(entry => (entry.diff || 0) === maxDiff);
+            if (diffLeaders.length === 1) {
+                return {
+                    champion: champion.player,
+                    reason: `Won on point differential after tying on ${topPoints} points.`
+                };
+            }
+
+            const maxH2h = Math.max.apply(null, diffLeaders.map(entry => entry.h2hPoints || 0));
+            const h2hLeaders = diffLeaders.filter(entry => (entry.h2hPoints || 0) === maxH2h);
+            if (h2hLeaders.length === 1) {
+                return {
+                    champion: champion.player,
+                    reason: `Won on head-to-head after tying on ${topPoints} points.`
+                };
+            }
+
+            return {
+                champion: champion.player,
+                reason: `Won on overall record after tying on ${topPoints} points.`
+            };
+        }
+
+        function finalizeRoundRobinIfReady() {
+            if (tournamentData.bracketFormat !== 'roundRobin' || tournamentData.status === 'completed') return false;
+            const matches = (tournamentData.winnersRounds || []).flat();
+            if (!matches.length || matches.some(m => !m || m.status !== 'completed')) return false;
+
+            const result = getRoundRobinChampionDetails();
+            if (!result.champion) return false;
+
+            tournamentData.status = 'completed';
+            tournamentData.activeMatchId = null;
+            tournamentData.activeMatchMetadata = null;
+            tournamentData.pendingWinner = null;
+            applyLifecycleUIChanges();
+            updateLiveWidget();
+            renderBracket();
+            saveToLocalStorage();
+            renderStatsTable();
+            showCelebration(result.champion, result.reason);
+            updateModifyButtonState();
+            return true;
+        }
+
         function renderStatsTable() {
             if (tournamentData.status === "empty") {
                 document.getElementById('statsWidget').classList.remove('visible');
@@ -2497,20 +3534,78 @@
             }
             document.getElementById('statsWidget').classList.add('visible');
 
+            const statsHead = document.querySelector('#statsWidget thead tr');
+
+            if (tournamentData.bracketFormat === 'roundRobin') {
+                const standings = getRoundRobinStandings();
+                if (statsHead) {
+                    statsHead.innerHTML = '<th>Player</th><th>P</th><th>W</th><th>L</th><th>Pts</th><th>Diff</th>';
+                }
+                let tbody = '';
+                standings.forEach((entry, index) => {
+                    tbody += `<tr>
+                      <td><span style="color:#64748b;margin-right:12px;font-size:10px;font-weight:800;">${index + 1}</span> ${entry.player}</td>
+                      <td>${entry.played}</td>
+                      <td>${entry.won}</td>
+                      <td>${entry.lost}</td>
+                      <td>${entry.points}</td>
+                      <td>${entry.diff}</td>
+                    </tr>`;
+                });
+                document.getElementById('statsTableBody').innerHTML = tbody;
+                return;
+            }
+
+            if (statsHead) {
+                statsHead.innerHTML = '<th>Player</th><th>P</th><th>W</th><th>L</th>';
+            }
+
             let stats = getPlayerStats();
             let rankScore = {};
             tournamentData.players.forEach(p => rankScore[p] = 50);
 
-            tournamentData.losersRounds.forEach((round, rIdx) => {
-                round.forEach(m => {
-                    if (m.status === 'completed' && m.loser && m.loser !== "BYE") {
-                        rankScore[m.loser] = rIdx + 1;
-                    }
+            if (tournamentData.bracketFormat === 'single') {
+                tournamentData.winnersRounds.forEach((round, rIdx) => {
+                    round.forEach(m => {
+                        if (m.status === 'completed' && m.loser && m.loser !== "BYE") {
+                            rankScore[m.loser] = rIdx + 1;
+                        }
+                    });
                 });
-            });
-            if (tournamentData.grandFinal && tournamentData.grandFinal.status === 'completed') {
-                rankScore[tournamentData.grandFinal.loser] = 100;
-                rankScore[tournamentData.grandFinal.winner] = 200;
+                const champion = getSingleEliminationChampion();
+                if (champion) {
+                    rankScore[champion] = 200;
+                    const finalRound = tournamentData.winnersRounds[tournamentData.winnersRounds.length - 1];
+                    const finalMatch = finalRound && finalRound[0];
+                    if (finalMatch && finalMatch.loser && finalMatch.loser !== "BYE") {
+                        rankScore[finalMatch.loser] = 100;
+                    }
+                }
+            } else if (tournamentData.bracketFormat === 'bestOfN') {
+                const boNMatch = tournamentData.winnersRounds && tournamentData.winnersRounds[0] ? tournamentData.winnersRounds[0][0] : null;
+                if (boNMatch && boNMatch.status === 'completed') {
+                    rankScore[boNMatch.winner] = 200;
+                    if (boNMatch.loser && boNMatch.loser !== "BYE") {
+                        rankScore[boNMatch.loser] = 100;
+                    }
+                }
+            } else if (tournamentData.bracketFormat === 'raceToN') {
+                const raceChampion = getRaceToNChampion();
+                if (raceChampion) {
+                    rankScore[raceChampion] = 200;
+                }
+            } else {
+                tournamentData.losersRounds.forEach((round, rIdx) => {
+                    round.forEach(m => {
+                        if (m.status === 'completed' && m.loser && m.loser !== "BYE") {
+                            rankScore[m.loser] = rIdx + 1;
+                        }
+                    });
+                });
+                if (tournamentData.grandFinal && tournamentData.grandFinal.status === 'completed') {
+                    rankScore[tournamentData.grandFinal.loser] = 100;
+                    rankScore[tournamentData.grandFinal.winner] = 200;
+                }
             }
 
             let sortedPlayers = Object.keys(stats).sort((a, b) => {
@@ -2552,7 +3647,195 @@
             }
         }
 
+        function getSingleEliminationChampion() {
+            if (tournamentData.bracketFormat !== 'single') return null;
+            if (!tournamentData.winnersRounds || tournamentData.winnersRounds.length === 0) return null;
+            const finalRound = tournamentData.winnersRounds[tournamentData.winnersRounds.length - 1];
+            const finalMatch = finalRound && finalRound[0];
+            if (!finalMatch || finalMatch.status !== 'completed' || !finalMatch.winner) return null;
+            return finalMatch.winner;
+        }
+
+        function getBestOfNChampion() {
+            if (tournamentData.bracketFormat !== 'bestOfN') return null;
+            const match = tournamentData.winnersRounds && tournamentData.winnersRounds[0] ? tournamentData.winnersRounds[0][0] : null;
+            if (!match || match.status !== 'completed' || !match.winner) return null;
+            return match.winner;
+        }
+
+        function getRaceToNCurrentMatch() {
+            if (tournamentData.bracketFormat !== 'raceToN') return null;
+            return tournamentData.winnersRounds && tournamentData.winnersRounds[0] ? tournamentData.winnersRounds[0][0] : null;
+        }
+
+        function getRaceToNChampion() {
+            if (tournamentData.bracketFormat !== 'raceToN') return null;
+            const targetN = tournamentData.raceToN || 0;
+            if (!targetN) return null;
+            const winCounts = tournamentData.raceToNWinCounts || {};
+            const winner = Object.keys(winCounts).find(player => (winCounts[player] || 0) >= targetN);
+            return winner || null;
+        }
+
+        function createRaceToNMatch(matchId, p1, p2) {
+            return {
+                id: matchId,
+                p1: p1,
+                p2: p2,
+                winner: null,
+                loser: null,
+                breaker: null,
+                status: 'pending',
+                p1Wins: tournamentData.raceToNWinCounts[p1] || 0,
+                p2Wins: tournamentData.raceToNWinCounts[p2] || 0
+            };
+        }
+
+        function initializeRaceToNState(players) {
+            tournamentData.raceToNWinCounts = {};
+            tournamentData.raceToNMatchHistory = [];
+            players.forEach(player => {
+                tournamentData.raceToNWinCounts[player] = 0;
+            });
+
+            const initialMatch = createRaceToNMatch('RTN-M1', players[0], players[1]);
+            tournamentData.winnersRounds = [[initialMatch]];
+            tournamentData.losersRounds = [];
+            tournamentData.grandFinal = null;
+        }
+
+        function startRaceToNCurrentMatch() {
+            const match = getRaceToNCurrentMatch();
+            if (!match || !match.p1 || !match.p2) return;
+            match.status = 'active';
+            tournamentData.activeMatchId = match.id;
+            tournamentData.activeMatchMetadata = { type: 'W', roundIdx: 0, matchIdx: 0, id: match.id };
+            tournamentData.pendingWinner = null;
+            tournamentData.pendingRoundRobinDiff = null;
+        }
+
+        function advanceRaceToNSeries(match, winner, loser) {
+            if (!match || !winner || !loser) return;
+
+            tournamentData.raceToNWinCounts[winner] = (tournamentData.raceToNWinCounts[winner] || 0) + 1;
+            match.winner = winner;
+            match.loser = loser;
+            match.status = 'completed';
+            match.p1Wins = tournamentData.raceToNWinCounts[match.p1] || 0;
+            match.p2Wins = tournamentData.raceToNWinCounts[match.p2] || 0;
+            tournamentData.raceToNMatchHistory.push({
+                id: match.id,
+                p1: match.p1,
+                p2: match.p2,
+                winner: winner,
+                loser: loser,
+                status: 'completed',
+                p1Wins: match.p1Wins,
+                p2Wins: match.p2Wins
+            });
+
+            const targetN = tournamentData.raceToN || 0;
+            if ((tournamentData.raceToNWinCounts[winner] || 0) >= targetN) {
+                tournamentData.status = 'completed';
+                tournamentData.activeMatchId = null;
+                tournamentData.activeMatchMetadata = null;
+                tournamentData.pendingWinner = null;
+                tournamentData.pendingRoundRobinDiff = null;
+                applyLifecycleUIChanges();
+                updateLiveWidget();
+                renderBracket();
+                saveToLocalStorage();
+                renderStatsTable();
+                showCelebration(winner, `${winner} reached ${targetN} match wins first.`);
+                updateModifyButtonState();
+                return;
+            }
+
+            const nextOpponentPool = tournamentData.players.filter(player => player !== winner && player !== loser);
+            if (!nextOpponentPool.length) {
+                tournamentData.status = 'completed';
+                tournamentData.activeMatchId = null;
+                tournamentData.activeMatchMetadata = null;
+                tournamentData.pendingWinner = null;
+                tournamentData.pendingRoundRobinDiff = null;
+                applyLifecycleUIChanges();
+                updateLiveWidget();
+                renderBracket();
+                saveToLocalStorage();
+                renderStatsTable();
+                showCelebration(winner, 'Race to N could not continue because no eligible opponent remained.');
+                updateModifyButtonState();
+                return;
+            }
+
+            const nextOpponent = nextOpponentPool[Math.floor(Math.random() * nextOpponentPool.length)];
+            const nextMatchNumber = tournamentData.raceToNMatchHistory.length + 1;
+            const nextMatch = createRaceToNMatch(`RTN-M${nextMatchNumber}`, winner, nextOpponent);
+            nextMatch.status = 'active';
+            tournamentData.winnersRounds = [[nextMatch]];
+            tournamentData.activeMatchId = nextMatch.id;
+            tournamentData.activeMatchMetadata = { type: 'W', roundIdx: 0, matchIdx: 0, id: nextMatch.id };
+            tournamentData.pendingWinner = null;
+            tournamentData.pendingRoundRobinDiff = null;
+
+            updateLiveWidget();
+            renderBracket();
+            saveToLocalStorage();
+            renderStatsTable();
+            updateModifyButtonState();
+        }
+
+        function isSingleEliminationFinalLocked() {
+            if (tournamentData.bracketFormat !== 'single') return false;
+            if (!tournamentData.winnersRounds || tournamentData.winnersRounds.length === 0) return false;
+            const finalRound = tournamentData.winnersRounds[tournamentData.winnersRounds.length - 1];
+            const finalMatch = finalRound && finalRound[0];
+            if (!finalMatch) return false;
+            return !!(finalMatch.p1 && finalMatch.p2 && finalMatch.p1 !== "BYE" && finalMatch.p2 !== "BYE");
+        }
+
+        function finalizeSingleEliminationIfReady() {
+            const champion = getSingleEliminationChampion();
+            if (!champion || tournamentData.status === 'completed') return false;
+
+            tournamentData.status = 'completed';
+            tournamentData.activeMatchId = null;
+            tournamentData.activeMatchMetadata = null;
+            tournamentData.pendingWinner = null;
+            applyLifecycleUIChanges();
+            updateLiveWidget();
+            renderBracket();
+            saveToLocalStorage();
+            renderStatsTable();
+            showCelebration(champion);
+            updateModifyButtonState();
+            return true;
+        }
+
         function propagateBrackets() {
+            if (tournamentData.bracketFormat === 'raceToN') return;
+            if (tournamentData.bracketFormat === 'single') {
+                for (let pass = 0; pass < 6; pass++) {
+                    for (let rIdx = 0; rIdx < tournamentData.winnersRounds.length; rIdx++) {
+                        tournamentData.winnersRounds[rIdx].forEach((match, i) => {
+                            executeMatchAutoRules(match);
+                            if (match.winner) {
+                                let nextRound = tournamentData.winnersRounds[rIdx + 1];
+                                if (nextRound) {
+                                    let nextMatchIdx = Math.floor(i / 2);
+                                    let slot = (i % 2 === 0) ? 'p1' : 'p2';
+                                    if (nextRound[nextMatchIdx]) {
+                                        nextRound[nextMatchIdx][slot] = match.winner;
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+                finalizeSingleEliminationIfReady();
+                return;
+            }
+
             for (let pass = 0; pass < 6; pass++) {
                 for (let rIdx = 0; rIdx < tournamentData.winnersRounds.length; rIdx++) {
                     tournamentData.winnersRounds[rIdx].forEach((match, i) => {
@@ -2629,29 +3912,45 @@
             toolbar.classList.add('visible');
             wrapper.innerHTML = '';
 
-            tournamentData.winnersRounds.forEach((round, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'round-nav-btn';
-                btn.innerText = `Winners R${index+1}`;
-                btn.onclick = () => focusSpecificRoundColumn('winnersGrid', index);
-                wrapper.appendChild(btn);
-            });
+            const liveBtn = document.createElement('button');
+            liveBtn.className = 'round-nav-btn';
+            liveBtn.innerText = 'Live Dashboard';
+            liveBtn.onclick = () => focusLiveDashboard();
+            wrapper.appendChild(liveBtn);
 
-            tournamentData.losersRounds.forEach((round, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'round-nav-btn';
-                btn.innerText = `Losers R${index+1}`;
-                btn.onclick = () => focusSpecificRoundColumn('losersGrid', index);
-                wrapper.appendChild(btn);
-            });
+            if (tournamentData.bracketFormat === 'roundRobin') {
+                const rrBtn = document.createElement('button');
+                rrBtn.className = 'round-nav-btn';
+                rrBtn.innerText = 'Round Robin Fixtures';
+                rrBtn.onclick = () => focusSpecificRoundColumn('winnersGrid', 0);
+                wrapper.appendChild(rrBtn);
+            } else {
+                tournamentData.winnersRounds.forEach((round, index) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'round-nav-btn';
+                    btn.innerText = `Winners R${index+1}`;
+                    btn.onclick = () => focusSpecificRoundColumn('winnersGrid', index);
+                    wrapper.appendChild(btn);
+                });
+            }
 
-            const finalBtn = document.createElement('button');
-            finalBtn.className = 'round-nav-btn';
-            finalBtn.innerText = '👑 Grand Finals';
-            finalBtn.onclick = () => {
-                document.getElementById('grandFinalsSection').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            };
-            wrapper.appendChild(finalBtn);
+            if (tournamentData.bracketFormat === 'double') {
+                tournamentData.losersRounds.forEach((round, index) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'round-nav-btn';
+                    btn.innerText = `Losers R${index+1}`;
+                    btn.onclick = () => focusSpecificRoundColumn('losersGrid', index);
+                    wrapper.appendChild(btn);
+                });
+
+                const finalBtn = document.createElement('button');
+                finalBtn.className = 'round-nav-btn';
+                finalBtn.innerText = '👑 Grand Finals';
+                finalBtn.onclick = () => {
+                    document.getElementById('grandFinalsSection').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                };
+                wrapper.appendChild(finalBtn);
+            }
         }
 
         function focusSpecificRoundColumn(gridId, roundIndex) {
@@ -2665,6 +3964,17 @@
                     grid.scrollTo({ left: targetColumn.offsetLeft - 40, behavior: 'smooth' });
                 }, 300);
             }
+        }
+
+        function isMobileViewport() {
+            if (!window.matchMedia) return window.innerWidth <= 768;
+            return window.matchMedia('(max-width: 767px)').matches;
+        }
+
+        function focusLiveDashboard() {
+            const widget = document.getElementById('liveMatchWidget');
+            if (!widget) return;
+            widget.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function drawConnectors(gridId, svgId) {
@@ -2754,6 +4064,24 @@
                 if (tournamentData.bestOfThree === undefined) tournamentData.bestOfThree = false;
                 if (tournamentData.bracketResetPlayed === undefined) tournamentData.bracketResetPlayed = false;
                 if (tournamentData.pendingWinner === undefined) tournamentData.pendingWinner = null;
+                if (tournamentData.pendingRoundRobinDiff === undefined) tournamentData.pendingRoundRobinDiff = null;
+                if (tournamentData.bestOfN === undefined) tournamentData.bestOfN = null;
+                if (tournamentData.raceToN === undefined) tournamentData.raceToN = null;
+                if (!tournamentData.raceToNWinCounts) tournamentData.raceToNWinCounts = {};
+                if (!tournamentData.raceToNMatchHistory) tournamentData.raceToNMatchHistory = [];
+                if (tournamentData.bracketFormat === undefined) tournamentData.bracketFormat = 'double';
+                if (!tournamentData.winnersRounds) tournamentData.winnersRounds = [];
+                if (!tournamentData.losersRounds) tournamentData.losersRounds = [];
+                if (!tournamentData.grandFinal && tournamentData.bracketFormat === 'double') tournamentData.grandFinal = { id: "GF-M1", p1: null, p2: null, winner: null, breaker: null, status: 'pending', p1Wins: 0, p2Wins: 0 };
+                if (tournamentData.bracketFormat === 'single') {
+                    tournamentData.losersRounds = [];
+                    tournamentData.grandFinal = null;
+                }
+                if (tournamentData.bracketFormat === 'raceToN' && tournamentData.players) {
+                    tournamentData.players.forEach(player => {
+                        if (tournamentData.raceToNWinCounts[player] === undefined) tournamentData.raceToNWinCounts[player] = 0;
+                    });
+                }
                 if (tournamentData.players) { stagedPlayers = [...tournamentData.players]; }
 
                 tournamentData.winnersRounds.forEach(r => r.forEach(m => migrateMatchData(m)));
@@ -2782,13 +4110,23 @@
             const genBtn = document.getElementById('genBtn');
             const startBtn = document.getElementById('startBtn');
             const statusBadge = document.getElementById('saveStatus');
+            const bo3Badge = document.getElementById('bo3StatusBadge');
             const displayContainer = document.getElementById('bracketsDisplay');
 
             document.body.className = `status-${tournamentData.status}`;
             renderPlayerChips();
+            applyFormatVisibility();
             rebuildToolbarInterface();
             updateBo3ToggleState();
             updateModifyButtonState();
+
+            if (bo3Badge) {
+                const showBo3 = tournamentData.status !== "empty" && tournamentData.bestOfThree;
+                bo3Badge.style.display = showBo3 ? 'inline-block' : 'none';
+            }
+            if (statusBadge) {
+                statusBadge.classList.remove('status-active');
+            }
 
             if (tournamentData.status === "empty") {
                 displayContainer.classList.remove('visible');
@@ -2811,6 +4149,7 @@
                 genBtn.style.display = 'none';
                 statusBadge.innerText = "⚔️ Tournament In Progress";
                 statusBadge.style.color = "#38bdf8";
+                statusBadge.classList.add('status-active');
                 document.getElementById('statsWidget').classList.add('visible');
             } else if (tournamentData.status === "completed") {
                 displayContainer.classList.add('visible');
@@ -2830,6 +4169,23 @@
         function generateBracket() {
             if (tournamentData.status === "active" || tournamentData.status === "completed") return;
             if (stagedPlayers.length < 2) { alert("Please add at least 2 players."); return; }
+            if (tournamentData.bracketFormat === 'bestOfN') {
+                if (stagedPlayers.length !== 2) { alert("Best of N allows only two players."); return; }
+                const bestOfNInput = document.getElementById('bestOfNInput');
+                const nValue = bestOfNInput ? bestOfNInput.value.trim() : '';
+                if (!/^\d+$/.test(nValue)) { alert("Please enter an odd integer N."); return; }
+                const parsedN = parseInt(nValue, 10);
+                if (parsedN < 1 || parsedN % 2 === 0) { alert("N must be an odd positive integer."); return; }
+                tournamentData.bestOfN = parsedN;
+            } else if (tournamentData.bracketFormat === 'raceToN') {
+                if (stagedPlayers.length < 3) { alert("Race to N requires at least 3 players."); return; }
+                const raceToNInput = document.getElementById('raceToNInput');
+                const nValue = raceToNInput ? raceToNInput.value.trim() : '';
+                if (!/^\d+$/.test(nValue)) { alert("Please enter a valid positive integer N."); return; }
+                const parsedN = parseInt(nValue, 10);
+                if (parsedN < 1) { alert("N must be a positive integer."); return; }
+                tournamentData.raceToN = parsedN;
+            }
 
             let shuffledPlayers = [...stagedPlayers];
             for (let i = shuffledPlayers.length - 1; i > 0; i--) {
@@ -2841,9 +4197,12 @@
             tournamentData.activeMatchId = null;
             tournamentData.activeMatchMetadata = null;
             tournamentData.pendingWinner = null;
+            tournamentData.pendingRoundRobinDiff = null;
             tournamentData.bracketResetPlayed = false;
             tournamentData.status = "unstarted";
-            tournamentData.bestOfThree = document.getElementById('bo3Toggle').checked;
+            tournamentData.bracketFormat = tournamentData.bracketFormat || 'double';
+            tournamentData.bestOfThree = (tournamentData.bracketFormat === 'double' || tournamentData.bracketFormat === 'single') ?
+                document.getElementById('bo3Toggle').checked : false;
 
             buildInitialFixtures(shuffledPlayers);
             propagateBrackets();
@@ -2857,6 +4216,9 @@
         function startTournament() {
             if (tournamentData.status !== "unstarted") return;
             tournamentData.status = "active";
+            if (tournamentData.bracketFormat === 'raceToN') {
+                startRaceToNCurrentMatch();
+            }
             applyLifecycleUIChanges();
             updateLiveWidget();
             saveToLocalStorage();
@@ -2869,20 +4231,8 @@
             }
             if (!confirm(warningText)) return;
             localStorage.removeItem('arenaLifecycleTournamentSave');
-            tournamentData = {
-                players: [],
-                winnersRounds: [],
-                losersRounds: [],
-                grandFinal: null,
-                activeMatchId: null,
-                activeMatchMetadata: null,
-                pendingWinner: null,
-                bracketResetPlayed: false,
-                status: "empty",
-                bestOfThree: false
-            };
-            stagedPlayers = ["Alice", "Bob", "Charlie", "Dave"];
-            document.getElementById('bo3Toggle').checked = false;
+            resetTournamentWorkspace(tournamentData.bracketFormat || 'double');
+            showHomePage();
             applyLifecycleUIChanges();
             updateLiveWidget();
             renderBracket();
@@ -2893,9 +4243,56 @@
         }
 
         function buildInitialFixtures(players) {
+            if (tournamentData.bracketFormat === 'roundRobin') {
+                let matches = [];
+                let matchIndex = 1;
+                for (let i = 0; i < players.length; i++) {
+                    for (let j = i + 1; j < players.length; j++) {
+                        matches.push({
+                            id: `RR-M${matchIndex++}`,
+                            p1: players[i],
+                            p2: players[j],
+                            winner: null,
+                            loser: null,
+                            breaker: null,
+                            status: 'pending',
+                            p1Wins: 0,
+                            p2Wins: 0
+                        });
+                    }
+                }
+                tournamentData.winnersRounds = [matches];
+                tournamentData.losersRounds = [];
+                tournamentData.grandFinal = null;
+                return;
+            }
+
+            if (tournamentData.bracketFormat === 'raceToN') {
+                initializeRaceToNState(players);
+                return;
+            }
+
+            if (tournamentData.bracketFormat === 'bestOfN') {
+                tournamentData.winnersRounds = [[{
+                    id: 'BON-M1',
+                    p1: players[0],
+                    p2: players[1],
+                    winner: null,
+                    loser: null,
+                    breaker: null,
+                    status: 'pending',
+                    p1Wins: 0,
+                    p2Wins: 0
+                }]];
+                tournamentData.losersRounds = [];
+                tournamentData.grandFinal = null;
+                return;
+            }
+
             const nextPowerOfTwo = Math.pow(2, Math.ceil(Math.log2(players.length)));
             const paddedPlayers = [...players];
             while (paddedPlayers.length < nextPowerOfTwo) { paddedPlayers.push("BYE"); }
+            const isSingleElimination = tournamentData.bracketFormat === 'single';
 
             let round1Matches = [];
             let matchIndex = 1;
@@ -2918,21 +4315,26 @@
                 tournamentData.winnersRounds.push(roundMatches);
             }
 
-            tournamentData.losersRounds = [];
-            let losersRoundCount = Math.max(1, (numWinnersRounds - 1) * 2);
-            let currentLosersMatchCount = round1Matches.length / 2;
-            for (let r = 0; r < losersRoundCount; r++) {
-                let roundMatches = [];
-                for (let m = 0; m < currentLosersMatchCount; m++) {
-                    roundMatches.push({ id: `L-R${r+1}-M${m+1}`, p1: null, p2: null, winner: null, loser: null, breaker: null,
-                        status: 'pending', p1Wins: 0, p2Wins: 0 });
+            if (isSingleElimination) {
+                tournamentData.losersRounds = [];
+                tournamentData.grandFinal = null;
+            } else {
+                tournamentData.losersRounds = [];
+                let losersRoundCount = Math.max(1, (numWinnersRounds - 1) * 2);
+                let currentLosersMatchCount = round1Matches.length / 2;
+                for (let r = 0; r < losersRoundCount; r++) {
+                    let roundMatches = [];
+                    for (let m = 0; m < currentLosersMatchCount; m++) {
+                        roundMatches.push({ id: `L-R${r+1}-M${m+1}`, p1: null, p2: null, winner: null, loser: null, breaker: null,
+                            status: 'pending', p1Wins: 0, p2Wins: 0 });
+                    }
+                    tournamentData.losersRounds.push(roundMatches);
+                    if (r % 2 === 1) currentLosersMatchCount /= 2;
                 }
-                tournamentData.losersRounds.push(roundMatches);
-                if (r % 2 === 1) currentLosersMatchCount /= 2;
-            }
 
-            tournamentData.grandFinal = { id: "GF-M1", p1: null, p2: null, winner: null, breaker: null, status: 'pending',
-                p1Wins: 0, p2Wins: 0 };
+                tournamentData.grandFinal = { id: "GF-M1", p1: null, p2: null, winner: null, breaker: null, status: 'pending',
+                    p1Wins: 0, p2Wins: 0 };
+            }
         }
 
         // ================================================================
@@ -2944,6 +4346,7 @@
             let round = type === 'W' ? tournamentData.winnersRounds[rIdx] : (type === 'L' ? tournamentData.losersRounds[
                 rIdx] : null);
             let match = round ? round[mIdx] : tournamentData.grandFinal;
+            let shouldFocusDashboard = false;
 
             if (match.winner || !match.p1 || !match.p2 || match.p1 === "BYE" || match.p2 === "BYE") return;
 
@@ -2964,21 +4367,28 @@
             if (tournamentData.activeMatchId === matchId) {
                 match.status = match.status === 'paused' ? 'active' : 'paused';
                 tournamentData.pendingWinner = null;
+                shouldFocusDashboard = match.status === 'active';
             } else {
                 match.status = 'active';
                 tournamentData.activeMatchId = matchId;
                 tournamentData.activeMatchMetadata = { type, roundIdx: rIdx, matchIdx: mIdx, id: matchId };
                 tournamentData.pendingWinner = null;
+                tournamentData.pendingRoundRobinDiff = null;
                 if (tournamentData.bestOfThree) {
                     match.p1Wins = 0;
                     match.p2Wins = 0;
                 }
+                shouldFocusDashboard = true;
             }
 
             updateLiveWidget();
             renderBracket();
             saveToLocalStorage();
             updateModifyButtonState();
+
+            if (shouldFocusDashboard && isMobileViewport()) {
+                focusLiveDashboard();
+            }
         }
 
         // ── COIN TOSS ──
@@ -3085,7 +4495,7 @@
             if (tournamentData.status !== "active") return;
             const meta = tournamentData.activeMatchMetadata;
             if (!meta) return;
-            if (!tournamentData.bestOfThree) return;
+            if (!tournamentData.bestOfThree && tournamentData.bracketFormat !== 'bestOfN') return;
 
             let match = null;
             let isGF = false;
@@ -3106,6 +4516,27 @@
                 loser = match.p2; } else if (match.p2Wins >= 2) { winner = match.p2;
                 loser = match.p1; }
 
+            if (tournamentData.bracketFormat === 'bestOfN') {
+                updateLiveWidget();
+                renderBracket();
+                saveToLocalStorage();
+                renderStatsTable();
+                updateModifyButtonState();
+                return;
+            }
+
+            if (tournamentData.bracketFormat === 'raceToN') {
+                if (winner) {
+                    advanceRaceToNSeries(match, winner, loser);
+                } else {
+                    updateLiveWidget();
+                    renderBracket();
+                    saveToLocalStorage();
+                    renderStatsTable();
+                }
+                return;
+            }
+
             if (winner) {
                 match.winner = winner;
                 match.loser = loser;
@@ -3113,6 +4544,28 @@
                 tournamentData.activeMatchId = null;
                 tournamentData.activeMatchMetadata = null;
                 tournamentData.pendingWinner = null;
+
+                if (tournamentData.bracketFormat === 'roundRobin') {
+                    updateLiveWidget();
+                    renderBracket();
+                    saveToLocalStorage();
+                    renderStatsTable();
+                    finalizeRoundRobinIfReady();
+                    updateModifyButtonState();
+                    return;
+                }
+
+                if (tournamentData.bracketFormat === 'single') {
+                    propagateBrackets();
+                    if (tournamentData.status !== 'completed') {
+                        updateLiveWidget();
+                        renderBracket();
+                        saveToLocalStorage();
+                        renderStatsTable();
+                    }
+                    updateModifyButtonState();
+                    return;
+                }
 
                 if (isGF) {
                     handleGFCompletion(winner, loser);
@@ -3199,7 +4652,7 @@
         // ================================================================
         //  CELEBRATION
         // ================================================================
-        function showCelebration(champion) {
+        function showCelebration(champion, decisionNote) {
             const overlay = document.getElementById('celebrationOverlay');
             document.getElementById('championName').textContent = champion;
 
@@ -3216,7 +4669,12 @@
                 '⭐ Legendary performance! ⭐',
                 '🔥 What a tournament run! 🔥'
             ];
-            document.getElementById('celebrationMessage').textContent = messages[Math.floor(Math.random() * messages.length)];
+            const celebrationMessage = document.getElementById('celebrationMessage');
+            if (decisionNote) {
+                celebrationMessage.textContent = decisionNote;
+            } else {
+                celebrationMessage.textContent = messages[Math.floor(Math.random() * messages.length)];
+            }
 
             overlay.classList.add('open');
             startFireworks();
@@ -3227,21 +4685,92 @@
             stopFireworks();
         }
 
+        function confirmRoundRobinWinner() {
+            if (tournamentData.status !== "active") return;
+            const meta = tournamentData.activeMatchMetadata;
+            const pNum = tournamentData.pendingWinner;
+            if (!meta || !pNum) return;
+
+            const diffInput = document.getElementById('rrDiffInput');
+            if (!diffInput) return;
+
+            const diffRaw = diffInput.value.trim();
+            if (!/^-?\d+$/.test(diffRaw)) {
+                alert('Please enter a valid integer diff before confirming the winner.');
+                diffInput.focus();
+                return;
+            }
+
+            const diff = parseInt(diffRaw, 10);
+            if (diff <= 0) {
+                alert('Please enter a positive integer diff before confirming the winner.');
+                diffInput.focus();
+                return;
+            }
+
+            tournamentData.pendingRoundRobinDiff = diff;
+            advancePlayer(meta.type, meta.roundIdx, meta.matchIdx, pNum, diff);
+        }
+
+        function confirmBestOfNWinner() {
+            if (tournamentData.status !== "active" || tournamentData.bracketFormat !== 'bestOfN') return;
+            const match = tournamentData.winnersRounds[0] && tournamentData.winnersRounds[0][0];
+            if (!match || match.status === 'completed') return;
+
+            const targetN = tournamentData.bestOfN || 0;
+            const p1Wins = match.p1Wins || 0;
+            const p2Wins = match.p2Wins || 0;
+            const totalSets = p1Wins + p2Wins;
+
+            if (!targetN || totalSets !== targetN) {
+                alert('Please complete all sets before confirming the winner.');
+                return;
+            }
+
+            const winner = p1Wins > p2Wins ? match.p1 : match.p2;
+            const loser = winner === match.p1 ? match.p2 : match.p1;
+            const winnerScore = winner === match.p1 ? p1Wins : p2Wins;
+            const loserScore = winner === match.p1 ? p2Wins : p1Wins;
+
+            match.winner = winner;
+            match.loser = loser;
+            match.status = 'completed';
+            tournamentData.activeMatchId = null;
+            tournamentData.activeMatchMetadata = null;
+            tournamentData.pendingWinner = null;
+            tournamentData.pendingRoundRobinDiff = null;
+            tournamentData.status = 'completed';
+
+            applyLifecycleUIChanges();
+            updateLiveWidget();
+            renderBracket();
+            saveToLocalStorage();
+            renderStatsTable();
+            showCelebration(winner, `Won best-of-${targetN} series ${winnerScore}-${loserScore}.`);
+            updateModifyButtonState();
+        }
+
         // ── Legacy confirm ──
         function executeConfirmWinner() {
-            if (tournamentData.bestOfThree) return;
+            if (tournamentData.bestOfThree && tournamentData.bracketFormat !== 'roundRobin') return;
+            if (tournamentData.bracketFormat === 'bestOfN') {
+                confirmBestOfNWinner();
+                return;
+            }
             let meta = tournamentData.activeMatchMetadata;
             let pNum = tournamentData.pendingWinner;
             if (!meta || !pNum) return;
 
             if (meta.type === 'GF') {
                 selectGFWinner(pNum);
+            } else if (tournamentData.bracketFormat === 'roundRobin') {
+                confirmRoundRobinWinner();
             } else {
                 advancePlayer(meta.type, meta.roundIdx, meta.matchIdx, pNum);
             }
         }
 
-        function advancePlayer(bracketType, roundIdx, matchIdx, playerNum) {
+        function advancePlayer(bracketType, roundIdx, matchIdx, playerNum, roundRobinDiff) {
             if (tournamentData.status !== "active") return;
             let round = bracketType === 'W' ? tournamentData.winnersRounds[roundIdx] : tournamentData.losersRounds[
             roundIdx];
@@ -3260,15 +4789,35 @@
                     match.p2Wins = 0; } else { match.p1Wins = 0;
                     match.p2Wins = 2; }
             }
+            if (tournamentData.bracketFormat === 'raceToN') {
+                advanceRaceToNSeries(match, winner, loser);
+                return;
+            }
+            if (tournamentData.bracketFormat === 'roundRobin') {
+                match.roundRobinDiff = roundRobinDiff || 0;
+            }
             tournamentData.activeMatchId = null;
             tournamentData.activeMatchMetadata = null;
             tournamentData.pendingWinner = null;
+            tournamentData.pendingRoundRobinDiff = null;
 
-            updateLiveWidget();
+            if (tournamentData.bracketFormat === 'roundRobin') {
+                updateLiveWidget();
+                renderBracket();
+                saveToLocalStorage();
+                renderStatsTable();
+                finalizeRoundRobinIfReady();
+                updateModifyButtonState();
+                return;
+            }
+
             propagateBrackets();
-            renderBracket();
-            saveToLocalStorage();
-            renderStatsTable();
+            if (tournamentData.bracketFormat !== 'single' || tournamentData.status !== 'completed') {
+                updateLiveWidget();
+                renderBracket();
+                saveToLocalStorage();
+                renderStatsTable();
+            }
             updateModifyButtonState();
         }
 
@@ -3343,7 +4892,15 @@
             if (tournamentData.status === "completed") {
                 widget.className = "live-widget completed-dashboard";
                 badge.innerText = "VICTORY";
-                let championName = tournamentData.grandFinal.winner || "Champion";
+                let championName = tournamentData.bracketFormat === 'single' ?
+                    (getSingleEliminationChampion() || "Champion") :
+                    (tournamentData.bracketFormat === 'roundRobin' ?
+                        (getRoundRobinChampion() || "Champion") :
+                        (tournamentData.bracketFormat === 'bestOfN' ?
+                            (getBestOfNChampion() || "Champion") :
+                            (tournamentData.bracketFormat === 'raceToN' ?
+                                (getRaceToNChampion() || "Champion") :
+                                ((tournamentData.grandFinal && tournamentData.grandFinal.winner) || "Champion"))));
                 body.innerHTML = `
               <div style="color:#10b981;font-size:15px;text-align:center;font-weight:700;margin-bottom:5px;">🏆 TOURNAMENT ENDED</div>
               <div style="color:#e2e8f0;font-size:13px;text-align:center;margin-bottom:15px;">Winner: <strong>${championName}</strong></div>
@@ -3419,7 +4976,153 @@
             let p1Class = '';
             let p2Class = '';
 
-            if (tournamentData.bestOfThree) {
+            if (tournamentData.bracketFormat === 'roundRobin') {
+                if (tournamentData.pendingWinner === 1) p1Class = 'selected-winner';
+                if (tournamentData.pendingWinner === 2) p2Class = 'selected-winner';
+
+                const rrDiffValue = tournamentData.pendingRoundRobinDiff != null ? tournamentData.pendingRoundRobinDiff : '';
+                const rrCanConfirm = !!tournamentData.pendingWinner && String(rrDiffValue).trim() !== '';
+                confirmBtnHtml = tournamentData.pendingWinner ?
+                    `<button id="confirmBtn" class="btn-confirm" ${rrCanConfirm ? '' : 'disabled'}>Confirm Winner</button>` :
+                    '';
+
+                widget.className = "live-widget active";
+                badge.innerText = "LIVE MATCH";
+                badge.style.color = "";
+                badge.style.backgroundColor = "";
+
+                body.innerHTML = `
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <div style="color:#3b82f6;font-size:11px;font-weight:700;">MATCH: ${customIdDisplay}</div>
+                <div id="pauseBtn" class="break-btn" style="flex:0;padding:4px 10px;background:rgba(245,158,11,0.1);color:#f59e0b;border:1px solid rgba(245,158,11,0.3);">⏸ PAUSE</div>
+              </div>
+              ${breakHtml}
+              <div style="margin:10px 0 12px;padding:10px 12px;border-radius:10px;border:1px solid rgba(59,130,246,0.18);background:rgba(15,23,42,0.42);">
+                <div style="font-size:10px;color:#64748b;text-align:center;margin-bottom:8px;font-weight:800;letter-spacing:0.1em;">POINT DIFFERENCE REQUIRED</div>
+                <input id="rrDiffInput" type="number" min="1" step="1" inputmode="numeric" placeholder="Enter diff" value="${rrDiffValue}" style="width:100%;box-sizing:border-box;background:rgba(15,23,42,0.88);color:#e2e8f0;padding:10px 12px;font-size:13px;border-radius:8px;border:1px solid rgba(59,130,246,0.22);" />
+                <div style="font-size:10px;color:#64748b;text-align:center;margin-top:8px;font-weight:600;letter-spacing:0.04em;">Winner gets +diff, loser gets -diff</div>
+              </div>
+              <div id="wp1" class="widget-player-btn ${p1Class}">${p1Name}</div>
+              <div class="widget-vs">VS</div>
+              <div id="wp2" class="widget-player-btn ${p2Class}">${p2Name}</div>
+              ${confirmBtnHtml}
+              <div style="margin-top:10px;font-size:10px;color:#64748b;text-align:center;font-weight:600;letter-spacing:0.05em;">Select the winner, enter a diff, then confirm</div>
+            `;
+
+                const rrDiffInput = document.getElementById('rrDiffInput');
+                if (rrDiffInput) {
+                    rrDiffInput.addEventListener('input', function() {
+                        tournamentData.pendingRoundRobinDiff = this.value;
+                        const cBtn = document.getElementById('confirmBtn');
+                        if (cBtn) {
+                            cBtn.disabled = this.value.trim() === '' || !tournamentData.pendingWinner;
+                        }
+                    });
+                }
+                document.getElementById('wp1').onclick = () => {
+                    tournamentData.pendingWinner = 1;
+                    updateLiveWidget();
+                };
+                document.getElementById('wp2').onclick = () => {
+                    tournamentData.pendingWinner = 2;
+                    updateLiveWidget();
+                };
+                const cBtn = document.getElementById('confirmBtn');
+                if (cBtn) cBtn.onclick = () => executeConfirmWinner();
+
+            } else if (tournamentData.bracketFormat === 'raceToN') {
+                const targetN = tournamentData.raceToN || 0;
+                const p1Wins = tournamentData.raceToNWinCounts[m.p1] || 0;
+                const p2Wins = tournamentData.raceToNWinCounts[m.p2] || 0;
+
+                if (tournamentData.pendingWinner === 1) p1Class = 'selected-winner';
+                if (tournamentData.pendingWinner === 2) p2Class = 'selected-winner';
+                confirmBtnHtml = tournamentData.pendingWinner ?
+                    `<div id="confirmBtn" class="btn-confirm">Confirm Winner</div>` : '';
+
+                widget.className = "live-widget active";
+                badge.innerText = "LIVE • RACE TO N";
+                badge.style.color = "";
+                badge.style.backgroundColor = "";
+
+                body.innerHTML = `
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <div style="color:#3b82f6;font-size:11px;font-weight:700;">MATCH: ${customIdDisplay}</div>
+                <div id="pauseBtn" class="break-btn" style="flex:0;padding:4px 10px;background:rgba(245,158,11,0.1);color:#f59e0b;border:1px solid rgba(245,158,11,0.3);">⏸ PAUSE</div>
+              </div>
+              ${breakHtml}
+              <div style="margin:10px 0 12px;padding:10px 12px;border-radius:10px;border:1px solid rgba(59,130,246,0.18);background:rgba(15,23,42,0.42);text-align:center;color:#cbd5e1;font-size:13px;font-weight:600;">
+                First player to reach ${targetN} match wins becomes champion
+              </div>
+              <div style="margin:0 0 12px;text-align:center;color:#64748b;font-size:11px;font-weight:700;letter-spacing:0.08em;">SERIES SCORE: ${p1Wins} - ${p2Wins}</div>
+              <div id="wp1" class="widget-player-btn ${p1Class}">${m.p1}</div>
+              <div class="widget-vs">VS</div>
+              <div id="wp2" class="widget-player-btn ${p2Class}">${m.p2}</div>
+              ${confirmBtnHtml}
+            `;
+
+                document.getElementById('wp1').onclick = () => { tournamentData.pendingWinner = 1;
+                    updateLiveWidget(); };
+                document.getElementById('wp2').onclick = () => { tournamentData.pendingWinner = 2;
+                    updateLiveWidget(); };
+                const cBtn = document.getElementById('confirmBtn');
+                if (cBtn) cBtn.onclick = () => executeConfirmWinner();
+
+            } else if (tournamentData.bracketFormat === 'bestOfN') {
+                const p1Wins = m.p1Wins || 0;
+                const p2Wins = m.p2Wins || 0;
+                const totalSets = p1Wins + p2Wins;
+                const targetN = tournamentData.bestOfN || 0;
+                const canConfirm = targetN > 0 && totalSets === targetN;
+                const p1Done = canConfirm && p1Wins > p2Wins;
+                const p2Done = canConfirm && p2Wins > p1Wins;
+
+                p1Class = p1Done ? 'selected-winner' : '';
+                p2Class = p2Done ? 'selected-winner' : '';
+
+                const p1ScoreDisplay = p1Wins;
+                const p2ScoreDisplay = p2Wins;
+
+                widget.className = "live-widget active";
+                badge.innerText = "LIVE • BEST OF N";
+                badge.style.color = "";
+                badge.style.backgroundColor = "";
+
+                body.innerHTML = `
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <div style="color:#3b82f6;font-size:11px;font-weight:700;">MATCH: ${customIdDisplay}</div>
+                <div id="pauseBtn" class="break-btn" style="flex:0;padding:4px 10px;background:rgba(245,158,11,0.1);color:#f59e0b;border:1px solid rgba(245,158,11,0.3);">⏸ PAUSE</div>
+              </div>
+              ${breakHtml}
+              <div style="margin:10px 0 12px;padding:10px 12px;border-radius:10px;border:1px solid rgba(59,130,246,0.18);background:rgba(15,23,42,0.42);text-align:center;color:#cbd5e1;font-size:13px;font-weight:600;">
+                ${p1Name} and ${p2Name} are playing a best of ${targetN}
+              </div>
+              <div id="wp1" class="widget-player-btn ${p1Class}" style="justify-content:space-between;">
+                <span>${p1Name}</span>
+                <div class="score-controls">
+                  <span class="win-count ${p1Wins >= 1 ? 'highlight-wins' : ''}">${p1ScoreDisplay}</span>
+                  <button class="widget-inc-btn" id="inc1" ${canConfirm ? 'disabled' : ''}>+</button>
+                </div>
+              </div>
+              <div class="widget-vs">VS</div>
+              <div id="wp2" class="widget-player-btn ${p2Class}" style="justify-content:space-between;">
+                <span>${p2Name}</span>
+                <div class="score-controls">
+                  <span class="win-count ${p2Wins >= 1 ? 'highlight-wins' : ''}">${p2ScoreDisplay}</span>
+                  <button class="widget-inc-btn" id="inc2" ${canConfirm ? 'disabled' : ''}>+</button>
+                </div>
+              </div>
+              ${canConfirm ? `<button id="confirmBtn" class="btn-confirm" style="margin-top:10px;">Confirm Winner</button>` : ''}
+            `;
+
+                document.getElementById('inc1')?.addEventListener('click', (e) => { e.stopPropagation();
+                    incrementWin(1); });
+                document.getElementById('inc2')?.addEventListener('click', (e) => { e.stopPropagation();
+                    incrementWin(2); });
+                const cBtn = document.getElementById('confirmBtn');
+                if (cBtn) cBtn.onclick = () => executeConfirmWinner();
+
+            } else if (tournamentData.bestOfThree) {
                 const p1Wins = m.p1Wins || 0;
                 const p2Wins = m.p2Wins || 0;
                 const p1Done = p1Wins >= 2;
@@ -3507,9 +5210,15 @@
         //  RENDER BRACKET
         // ================================================================
         function renderBracket() {
+            applyFormatVisibility();
             renderGrid('winnersGrid', tournamentData.winnersRounds, 'W');
-            renderGrid('losersGrid', tournamentData.losersRounds, 'L');
-            renderGrandFinal();
+            if (tournamentData.bracketFormat === 'single' || tournamentData.bracketFormat === 'bestOfN' || tournamentData.bracketFormat === 'raceToN') {
+                renderGrid('losersGrid', [], 'L');
+                renderGrandFinal();
+            } else {
+                renderGrid('losersGrid', tournamentData.losersRounds, 'L');
+                renderGrandFinal();
+            }
             triggerGlobalLineRepaint();
         }
 
@@ -3557,6 +5266,10 @@
                         const isFinal = match.status === 'completed';
                         scoreBadge =
                             `<span class="bo3-score-badge ${isFinal ? 'finalized' : ''}">${p1W} – ${p2W}</span>`;
+                    } else if (tournamentData.bracketFormat === 'raceToN' && match.p1 && match.p2 && match.p1 !== "BYE" && match.p2 !== "BYE") {
+                        const p1W = match.p1Wins || 0;
+                        const p2W = match.p2Wins || 0;
+                        scoreBadge = `<span class="bo3-score-badge">${p1W} – ${p2W}</span>`;
                     }
 
                     matchupDiv.innerHTML = `
@@ -3581,6 +5294,11 @@
 
         function renderGrandFinal() {
             const grid = document.getElementById('grandFinalsGrid');
+            if (!grid) return;
+            if (tournamentData.bracketFormat === 'single' || tournamentData.bracketFormat === 'bestOfN' || tournamentData.bracketFormat === 'raceToN' || !tournamentData.grandFinal) {
+                grid.innerHTML = '';
+                return;
+            }
             grid.innerHTML = '';
             let gf = tournamentData.grandFinal;
             const roundDiv = document.createElement('div');
@@ -3635,16 +5353,8 @@
         // ================================================================
         // Show home page by default
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if there's a saved tournament and auto-load if user wants
-            const saved = localStorage.getItem('arenaLifecycleTournamentSave');
-            if (saved) {
-                // Show home page with option to load
-                document.getElementById('homePage').style.display = 'flex';
-            } else {
-                document.getElementById('homePage').style.display = 'flex';
-            }
+            showHomePage();
             // Initialize background
-            loadFromLocalStorage();
         });
 
         // Make functions globally accessible
